@@ -17,8 +17,6 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  # Branch to build the container image from
-  BRANCH: v1
 
 jobs:
   build:
@@ -31,8 +29,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: ${{ env.BRANCH }}
 
       - name: Get Node Version
         run: echo "NODE_VERSION=$(cat .node-version)" >> $GITHUB_ENV
